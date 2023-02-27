@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home {
+    background: url('../Images/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 90.5vh;
+    margin-top: -10px;
+    width: 100%;
+}
+
+.card img {
+    width: "10rem";
+    height: "10rem";
+    margin-left: "4rem";
+    margin-top: "0.5rem";
+    border-radius: "50%";
+}
