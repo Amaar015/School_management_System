@@ -1,7 +1,37 @@
+
 const userModel = require('../models/userModels');
 const bcrypt = require('bcryptjs')
-const LoginController = () => {
-
+const jwt = require('jsonwebtoken')
+const LoginController = async (req, res) => {
+    try {
+        const user = await userModel.findOne({ email: req.body.email })
+        if (!user) {
+            return res.status(200).send({
+                success: false,
+                message: "User not found"
+            })
+        }
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
+        if (!isMatch) {
+            return res.status(200).sned({
+                message: "Invalid email or password please try again",
+                success: false
+            })
+        }
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" })
+        res.status(200).send({
+            success: true,
+            message: "Login Successfuly",
+            token,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            success: false,
+            message: "error during login user",
+            error,
+        })
+    }
 }
 const RegisterController = async (req, res) => {
     try {
@@ -18,7 +48,7 @@ const RegisterController = async (req, res) => {
         req.body.password = hashPassword;
         const newUser = new userModel(req.body);
         await newUser.save();
-        res.send(201).send({
+        res.status(201).send({
             success: false,
             message: "Register Successfully",
         })

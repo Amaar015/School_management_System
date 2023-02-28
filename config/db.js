@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const colors = require('colors');
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect('mongodb://127.0.0.1:27017/School_management_System', {
     useNewUrlParser: true, useUnifiedTopology: true,
     //    useCreateIndex:true, useFindAndModify:true  
 })
