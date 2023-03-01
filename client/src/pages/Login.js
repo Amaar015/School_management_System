@@ -1,13 +1,14 @@
 import React from 'react'
-import { Form, Input } from 'antd'
-import { Link, useNavigate, useNavigationType } from 'react-router-dom'
+import { Form, Input, message } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
 import './Styles/Register.css'
+import axios from 'axios'
 const Login = () => {
     const navigate = useNavigate()
     const onfinishHandler = async (values) => {
         try {
             const res = await axios.post('/api/v1/user/login', values)
-            window.location.reload();
+            // window.location.reload();
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token)
                 message.success("Login Successfully");
@@ -33,7 +34,7 @@ const Login = () => {
                     <Form.Item label="Password" name="password">
                         <Input type="password" required />
                     </Form.Item>
-                    <button className='btn btn-primary' type='submit'>Register</button>
+                    <button className='btn btn-primary' type='submit'>Login</button>
                     <Link to='/register' className="mt-4 link">
                         Create Account
                     </Link>
