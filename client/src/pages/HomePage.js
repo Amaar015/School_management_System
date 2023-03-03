@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { message } from 'antd'
 import '../App.css'
 import axios from 'axios'
+import Layout from '../components/Layout'
 const HomePage = () => {
     const getuserData = async () => {
         try {
@@ -19,9 +20,9 @@ const HomePage = () => {
         getuserData()
     }, [])
     return (
-        <>
+        <Layout>
             <h1>Home Page</h1>
-        </>
+        </Layout>
     )
 }
 
