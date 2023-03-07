@@ -21,7 +21,7 @@ export const usertype = [
 export const AdminMenu = [
     {
         name: "Profile",
-        path: "/",
+        path: "/profile",
         icon: "fa-solid fa-user"
     },
     {
@@ -76,13 +76,7 @@ export const AdminMenu = [
         name: "Add Subject",
         path: "/addSubject",
         icon: "fa-solid fa-bars-progress"
-    },
-    {
-        name: "Logout",
-        path: "/logout",
-        icon: "fa-solid fa-right-from-bracket"
-    },
-
+    }
 
 ]
 
@@ -90,18 +84,18 @@ export const AdminMenu = [
 export const StudentMenu = [
     {
         name: "Profile",
-        path: "/",
+        path: "/profile",
         icon: "fa-solid fa-user"
     },
     {
         name: "Attendance",
-        path: "/seeAllAttendance",
+        path: "/see_Attendance",
         icon: "fa-solid fa-clipboard-user"
     },
 
     {
         name: "Time Table",
-        path: "/showTimetable",
+        path: "/Timetable",
         icon: "fa-solid fa-business-time"
     },
     {
@@ -137,11 +131,6 @@ export const StudentMenu = [
         icon: "fa-solid fa-dollar-sign"
     },
 
-    {
-        name: "Logout",
-        path: "/logout",
-        icon: "fa-solid fa-right-from-bracket"
-    },
 
 
 ]
@@ -150,7 +139,7 @@ export const StudentMenu = [
 export const TeacherMenu = [
     {
         name: "Profile",
-        path: "/",
+        path: "/profile",
         icon: "fa-solid fa-user"
     },
     {
@@ -173,12 +162,6 @@ export const TeacherMenu = [
         name: "Notice",
         path: "/seeAllNotice",
         icon: "fa-solid fa-bell"
-    },
-
-    {
-        name: "Logout",
-        path: "/logout",
-        icon: "fa-solid fa-right-from-bracket"
     },
 
 

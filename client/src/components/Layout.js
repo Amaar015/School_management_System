@@ -6,6 +6,15 @@ import { useSelector } from 'react-redux'
 const Layout = ({ children }) => {
     const location = useLocation()
     const { user } = useSelector((state) => state.user)
+    // Logout function
+    const handleLogout = () => {
+        localStorage.clear();
+        message.success("Logout Successfully");
+        // window.location.reload(true)
+        navigate('/login');
+
+
+    }
     // const stdadmin =
     const Sidemenu = user?.isTeacher ? TeacherMenu : user?.isAdmin ? AdminMenu : StudentMenu
     return (
@@ -22,7 +31,7 @@ const Layout = ({ children }) => {
                             const isActive = location.pathname == menu.path
                             return (
                                 <>
-                                    <div className={`menuitem ${isActive && 'active'}`}>
+                                    <div className={`menu-item ${isActive && 'active'}`}>
                                         <i className={menu.icon}></i>
                                         <Link className='path' to={menu.path}>{menu.name}</Link>
                                     </div>
@@ -30,7 +39,10 @@ const Layout = ({ children }) => {
                             )
                         })}
                     </div>
-
+                    <div className={`menu-item`} onClick={handleLogout}>
+                        <i className='fa-solid fa-right-from-bracket'></i>
+                        <Link to='/login'>Logout</Link>
+                    </div>
 
                 </div>
                 <div className="content">
