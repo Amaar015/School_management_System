@@ -42,6 +42,7 @@ const RegisterController = async (req, res) => {
                 message: "User Another email email exists"
             })
         }
+
         const password = req.body.password;
         const salt = await bcrypt.genSalt(12);
         const hashPassword = await bcrypt.hash(password, salt)
