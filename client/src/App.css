@@ -123,3 +123,16 @@
     border-radius: 50%;
     margin: 1rem 15rem;
 }
+
+.home1 .profiles .data {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    gap: 1rem;
+}
+
+.home1 .profiles .data .datum {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}

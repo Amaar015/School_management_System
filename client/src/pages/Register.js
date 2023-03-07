@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, message } from 'antd'
+import { Form, Input, message, Radio } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
 import './Styles/Register.css'
 import axios from 'axios'
@@ -9,6 +9,7 @@ const Register = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const onfinishHandler = async (values) => {
+        console.log(values)
         try {
             dispatch(showLoading())
             const res = await axios.post('/api/v1/user/register', values)
@@ -30,7 +31,7 @@ const Register = () => {
     return (
         <>
             <div className="form-container">
-                <Form layout="vertical" onFinish={onfinishHandler} className="card">
+                <Form layout="horizontal" onFinish={onfinishHandler} className="card">
                     <h1>Register Form</h1>
                     <Form.Item label="Name" name="name">
                         <Input type="text" required />
@@ -38,6 +39,23 @@ const Register = () => {
                     <Form.Item label="Email" name="email">
                         <Input type="email" required />
                     </Form.Item>
+
+                    <Form.Item label="Mobile No" name="mobileNo">
+                        <Input type="number" required />
+                    </Form.Item>
+                    <Form.Item label="Department" name="department">
+                        <Input type="text" required />
+                    </Form.Item>
+                    <Form.Item label="Date of birth" name="dateofbirth">
+                        <Input type="text" required placeholder='MM/DD/YYYY' />
+                    </Form.Item>
+                    <Form.Item label="Age" name="age">
+                        <Input type="number" required />
+                    </Form.Item>
+                    <Form.Item label="Address" name="address">
+                        <Input type="text" required />
+                    </Form.Item>
+
                     <Form.Item label="Password" name="password">
                         <Input type="password" required />
                     </Form.Item>
