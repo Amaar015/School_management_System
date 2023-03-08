@@ -81,7 +81,7 @@ export const AdminMenu = [
 ]
 
 
-export const StudentMenu = [
+export const StudentMenus = [
     {
         name: "Profile",
         path: "/profile",

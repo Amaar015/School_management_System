@@ -16,6 +16,64 @@ const Layout = ({ children }) => {
 
     }
     // const stdadmin =
+    // Student menu start
+    const StudentMenu = [
+        {
+            name: "Profile",
+            path: `/profile/:${user?._id}`,
+            icon: "fa-solid fa-user"
+        },
+        {
+            name: "Attendance",
+            path: "/see_Attendance",
+            icon: "fa-solid fa-clipboard-user"
+        },
+
+        {
+            name: "Time Table",
+            path: "/Timetable",
+            icon: "fa-solid fa-business-time"
+        },
+        {
+            name: "Result",
+            path: "/viewStudentResult",
+            icon: "fa-solid fa-square-poll-vertical"
+        },
+        {
+            name: "Subject",
+            path: "/showAllSubject",
+            icon: "fa-solid fa-bars-progress"
+        },
+        {
+            name: "Join Clud",
+            path: "/joinClubRequest",
+            icon: "fa-solid fa-c"
+        },
+
+        {
+            name: "Complain",
+            path: "/sendAllComplain",
+            icon: "fa-solid fa-circle-info"
+        },
+
+        {
+            name: "Notice",
+            path: "/seeAllNotice",
+            icon: "fa-solid fa-bell"
+        },
+        {
+            name: "Payment",
+            path: "/PaymentMethode",
+            icon: "fa-solid fa-dollar-sign"
+        },
+
+
+
+    ]
+
+    // student menu end
+
+
     const Sidemenu = user?.isTeacher ? TeacherMenu : user?.isAdmin ? AdminMenu : StudentMenu
     return (
 
