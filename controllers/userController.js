@@ -89,9 +89,49 @@ const AuthControllers = async (req, res) => {
     }
 }
 
+// to get the user data from database
+const getUserInfoController = async (req, res) => {
+    try {
+        const employess = await userModel.findOne({ _id: req.body.userId })
+        console.log(employess);
+        res.status(200).send({
+            success: true,
+            message: "User find Successfuly",
+            data: employess,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Data can't not get",
+            success: false,
+        })
+    }
+}
 
+const getUpdateProfileController = async (req, res) => {
+    try {
+        const user = await userModel.findOneAndUpdate({
+            _id: req.body.userId
+        },
+            req.body
+        )
+        res.status(201).send({
+            success: true,
+            message: "User Profile Updated",
+            data: user
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Profile can't updated",
+            success: false
+        })
+    }
+}
 module.exports = {
     LoginController,
     RegisterController,
-    AuthControllers
+    AuthControllers,
+    getUserInfoController,
+    getUpdateProfileController
 }
