@@ -17,6 +17,7 @@ import Club from './pages/student/Club';
 import Complain from './pages/student/Complain';
 import Pyment from './pages/student/Pyment';
 import Notice from './pages/student/Notice';
+import UpdateProfile from './pages/UpdateProfile';
 const App = () => {
   const { loading } = useSelector(state => state.alerts)
   return (
@@ -53,6 +54,11 @@ const App = () => {
             <Route path='/showAllSubject' element={
               <ProtectedRoute>
                 <Subject />
+              </ProtectedRoute>
+            } />
+            <Route path='/updateProfile' element={
+              <ProtectedRoute>
+                <UpdateProfile />
               </ProtectedRoute>
             } />
 

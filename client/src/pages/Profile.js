@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import student from '../Images/student.png'
 import teacher from '../Images/teacher.jfif'
 import admin from '../Images/admin.png'
+import { Link, useNavigate } from 'react-router-dom'
+
 import '../App.css'
 // import student from '../Images/student.png'
 const Profile = () => {
@@ -44,7 +46,15 @@ const Profile = () => {
                             <h5>Address:</h5>
                             <h5>{user.address}</h5>
                         </div>
+                        <div className="buttons">
+
+                            <Link to='/updateProfile' className="mt-4 link">
+                                <button className='btn btn-success'>Update</button>
+
+                            </Link>
+                        </div>
                     </div>
+
                 </div>
 
 
