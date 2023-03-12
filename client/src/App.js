@@ -1,98 +1,89 @@
 import React from 'react'
-import './App.css';
+import UserPage from './pages/UserPage'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import AdminRegister from './pages/Admin/AdminRegister';
+import AdminLogin from './pages/Admin/AdminLogin';
+import TeacherLogin from './pages/Teacher/TeacherLogin';
+import TeacherRegister from './pages/Teacher/TeacherRegister';
+import StdLogin from './pages/Student/StdLogin';
+import AdminProtectedRoute from './Components/AdminProtectedRoute';
+import PublicRoute from './Components/PublicRoute';
+import Home from './pages/Home';
+import AddStudent from './pages/Admin/AddStudent';
+import AddFaculty from './pages/Admin/AddFaculty';
+import ViewStudent from './pages/Admin/ViewStudent';
 import { useSelector } from 'react-redux';
-import Spiner from './components/Spiner';
-import PublicRoute from './components/PublicRoute';
-import ProtectedRoute from './components/ProtectedRoute'
-import Profile from './pages/Profile';
-import Attendance from './pages/student/Attendance';
-import Timetable from './pages/student/Timetable';
-import Result from './pages/student/Result';
-import Subject from './pages/student/Subject';
-import Club from './pages/student/Club';
-import Complain from './pages/student/Complain';
-import Pyment from './pages/student/Pyment';
-import Notice from './pages/student/Notice';
+import StdProtectedRoute from './Components/StdProtected';
+
 const App = () => {
-  const { loading } = useSelector(state => state.alerts)
+  const { admin } = useSelector(state => state.admin);
+  // const { admin } = useSelector((state) => state.admin);
+  // const Protected = admin ? StdProtectedRoute : AdminProtectedRoute;
+
   return (
     <>
-
       <BrowserRouter>
-        {loading ? (<Spiner />) :
-          (<Routes>
-            <Route path='/' element={
-              <ProtectedRoute>
-                <HomePage />
-              </ProtectedRoute>
-            } />
-            <Route path='/profile/:id' element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            } />
-            <Route path='/see_Attendance' element={
-              <ProtectedRoute>
-                <Attendance />
-              </ProtectedRoute>
-            } />
-            <Route path='/Timetable' element={
-              <ProtectedRoute>
-                <Timetable />
-              </ProtectedRoute>
-            } />
-            <Route path='/viewStudentResult' element={
-              <ProtectedRoute>
-                <Result />
-              </ProtectedRoute>
-            } />
-            <Route path='/showAllSubject' element={
-              <ProtectedRoute>
-                <Subject />
-              </ProtectedRoute>
-            } />
+        <Routes>
+
+          <Route path='/' element={
+            <PublicRoute>
+              <UserPage />
+            </PublicRoute>
+          } />
+
+          <Route path='/adminRegister' element={
+            <PublicRoute>
+              <AdminRegister />
+            </PublicRoute>
+          } />
+          <Route path='/adminLogin' element={
+            <PublicRoute>
+              <AdminLogin />
+            </PublicRoute>
+          } />
+
+          <Route path='/teacherRegister' element={
+            <PublicRoute>
+              <TeacherRegister />
+            </PublicRoute>
+          } />
+          <Route path='/teacherLogin' element={
+            <PublicRoute>
+              <TeacherLogin />
+            </PublicRoute>
+          } />
+
+          <Route path='/studentLogin' element={
+            <PublicRoute>
+              <StdLogin />
+            </PublicRoute>
+          } />
 
 
-            <Route path='/joinClubRequest' element={
-              <ProtectedRoute>
-                <Club />
-              </ProtectedRoute>
-            } />
-            <Route path='/sendAllComplain' element={
-              <ProtectedRoute>
-                <Complain />
-              </ProtectedRoute>
-            } />
-            <Route path='/seeAllNotice' element={
-              <ProtectedRoute>
-                <Notice />
-              </ProtectedRoute>
-            } />
-
-            <Route path='/PaymentMethode' element={
-              <ProtectedRoute>
-                <Pyment />
-              </ProtectedRoute>
-            } />
+          <Route path='/home-user' element={
+            <AdminProtectedRoute>
+              <Home />
+            </AdminProtectedRoute>
+          } />
 
 
-            <Route path='/login' element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            } />
-            <Route path='/Register' element={
-              <PublicRoute>
-                <Register />
-              </PublicRoute>
-            } />
+          <Route path='/addStudent' element={
+            <AdminProtectedRoute>
+              <AddStudent />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/admin/faculty' element={
+            <AdminProtectedRoute>
+              <AddFaculty />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/admin/SeeAllStudnet' element={
+            <AdminProtectedRoute>
+              <ViewStudent />
+            </AdminProtectedRoute>
+          } />
 
-          </Routes>
-          )}
+        </Routes>
       </BrowserRouter>
     </>
   )

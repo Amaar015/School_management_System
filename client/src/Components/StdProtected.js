@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { hideLoading, showLoading } from '../redux/feature/alertSlice'
+import { hideLoading, showLoading } from '../Redux/features/alertSlice'
 import axios from 'axios'
-import { setUser } from '../redux/feature/userSlice'
-export default function ProtectedRoute({ children }) {
+import { setStd } from '../Redux/features/stdSlice'
+export default function StdProtectedRoute({ children }) {
     const dispatch = useDispatch();
-    const { user } = useSelector((state) => state.user);
-
+    // const { std } = useSelector(state => state.std);
     // get user
     const getUser = async () => {
         try {
             dispatch(showLoading());
-            const res = await axios.post("/api/v1/user/getUserData",
+            const res = await axios.post("/api/v1/student/setStdData",
                 { token: localStorage.getItem("token") },
                 {
                     headers: {
@@ -22,10 +21,11 @@ export default function ProtectedRoute({ children }) {
             );
             dispatch(hideLoading());
             if (res.data.success) {
-                dispatch(setUser(res.data.data));
+                console.log(res.data.data);
+                // dispatch(setStd(res.data.data));
             }
             else {
-                <Navigate to='/login' />
+                <Navigate to='/studentLogin' />
                 localStorage.clear();
             }
         } catch (error) {
@@ -36,15 +36,16 @@ export default function ProtectedRoute({ children }) {
 
     }
     useEffect(() => {
-        if (!user) {
-            getUser()
-            // exit();
-        }
-    }, [user, getUser])
+        // if (!std) {
+        getUser()
+        // exit();
+        // }
+    }, [getUser])
 
     if (localStorage.getItem('token')) {
         return children;
     } else {
-        return <Navigate to='/login' />
+        return <Navigate to='/studentLogin' />
     }
 }
+
