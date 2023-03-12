@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 
 
-const userSchema = new mongoose.Schema({
+const TeacherSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Name is Required"]
     },
-    email: {
-        type: String,
-        required: [true, "Email is Required"]
-    },
-    department: {
+    subject: {
         type: String,
         required: true
     },
@@ -18,13 +14,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    id: {
+    email: {
         type: String,
-
+        required: [true, "Email is Required"]
+    },
+    qualification: {
+        type: String,
+        required: true
     },
     age: {
         type: Number,
         required: true,
+    },
+    gender: {
+        type: String,
+        required: true
     },
     mobileNo: {
         type: Number,
@@ -39,30 +43,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is Required"]
     },
-
-    isAdmin: {
-        type: Boolean,
-        default: false,
-    },
-    isStudent: {
-        type: Boolean,
-        default: false,
-    },
     isTeacher: {
         type: Boolean,
-        default: false,
-    },
-    notification: {
-        type: Array,
-        dafault: []
-    },
-    SeenNotification: {
-        type: Array,
-        dafault: [],
+        default: true,
     }
 })
 
 // create a database Model
-const userModel = mongoose.model('userdb', userSchema)
+const userModel = mongoose.model('TeacherDB', userSchema)
 // exports a userModel
 module.exports = userModel;
