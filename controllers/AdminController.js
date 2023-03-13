@@ -145,10 +145,18 @@ const getStudentInfo = async (req, res) => {
 
 const DeleteStdProfileController = async (req, res) => {
     try {
-
-        const student = await stdModel.findByIdAndDelete({ email: req.body.StdEmail })
+        console.log(req.body.StdEmail)
+        const student = await stdModel.findOneAndDelete({ email: req.body.StdEmail })
+        res.status(200).send({
+            success: true,
+            message: "User deleted successfuly",
+            data: student,
+        })
     } catch (error) {
-
+        res.status(401).send({
+            success: false,
+            message: "Opps Something went wrong"
+        })
     }
 }
 // // to get the user data from database
