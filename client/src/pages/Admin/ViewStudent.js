@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import { message, Table } from 'antd';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ViewStudent = () => {
     const [student, setStudent] = useState([]);
@@ -24,22 +25,15 @@ const ViewStudent = () => {
         getStudent()
     }, [])
 
-    // Edit the user
-    const handleEdit = async () => {
-        try {
-            alert('hello brother')
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    // Delete the user 
-    const handleDelete = async (email) => {
-        try {
-            alert(email)
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
+    // // Delete the user 
+    // const handleDelete = async (email) => {
+    //     try {
+    //         alert(email)
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     const columns = [
         {
@@ -76,7 +70,9 @@ const ViewStudent = () => {
             title: "Action",
             render: (text, record) => (
                 <div className="d-flex gap-2">
-                    <button className="btn btn-success" onClick={handleEdit}>Edit</button>
+                    <Link to='/student/Profile'>
+                        <button className="btn btn-success" >Edit</button>
+                    </Link>
                     <button className="btn btn-danger" onClick={async () => {
                         try {
                             const res = await axios.post('/api/v1/admin/DeleteStdprofile',
@@ -87,6 +83,10 @@ const ViewStudent = () => {
                                     }
                                 }
                             )
+                            if (res.data.success) {
+                                message.success('Student deleted successfuly')
+                            }
+                            window.location.reload();
                         } catch (error) {
 
                         }
