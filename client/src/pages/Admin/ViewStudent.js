@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import { message, Table } from 'antd';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ViewStudent = () => {
     const [student, setStudent] = useState([]);
-
+    const navigate = useNavigate();
     const getStudent = async () => {
         try {
             const res = await axios.get('/api/v1/admin/getStudentInfo', {
@@ -70,9 +70,14 @@ const ViewStudent = () => {
             title: "Action",
             render: (text, record) => (
                 <div className="d-flex gap-2">
-                    <Link to='/student/Profile'>
-                        <button className="btn btn-success" >Edit</button>
-                    </Link>
+
+                    <button className="btn btn-success" onClick={async () => {
+                        try {
+                            navigate(`/student/Profile/${record.email}`)
+                        } catch (error) {
+                            message.error("Something went wrong")
+                        }
+                    }} >Edit</button>
                     <button className="btn btn-danger" onClick={async () => {
                         try {
                             const res = await axios.post('/api/v1/admin/DeleteStdprofile',

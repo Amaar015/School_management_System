@@ -40,7 +40,7 @@ const AddStudent = () => {
     return (
 
         <Layout>
-            <h1 className='text-center'>apply doctore</h1>
+            <h1 className='text-center'>Register Student</h1>
             <Form onFinish={handlefinish} className='m-4' >
                 <h4 className='text-dark'>personal Details</h4>
                 <Row gutter={20} >

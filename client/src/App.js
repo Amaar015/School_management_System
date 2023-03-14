@@ -83,7 +83,7 @@ const App = () => {
               <ViewStudent />
             </AdminProtectedRoute>
           } />
-          <Route path='/student/Profile' element={
+          <Route path='/student/Profile/:email' element={
             <AdminProtectedRoute>
               <Profile />
             </AdminProtectedRoute>
