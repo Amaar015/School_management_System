@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const adminModel = require('../models/AdminModel')
 const stdModel = require('../models/studentModel');
-const teacherModel = require('../models/TeacherModels')
+const teacherModel = require('../models/teacherModels')
 // Register Controller
 const adminRegisterController = async (req, res) => {
     try {
@@ -217,7 +217,7 @@ const TeacherRegisterController = async (req, res) => {
         const salt = await bcrypt.genSalt(12);
         const hashPassword = await bcrypt.hash(password, salt)
         req.body.password = hashPassword;
-        const newUser = new stdModel(req.body);
+        const newUser = new teacherModel(req.body);
         await newUser.save();
         res.status(201).send({
             success: true,
