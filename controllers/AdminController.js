@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const adminModel = require('../models/AdminModel')
 const stdModel = require('../models/studentModel');
+const teacherModel = require('../models/TeacherModels')
 // Register Controller
 const adminRegisterController = async (req, res) => {
     try {
@@ -160,86 +161,82 @@ const DeleteStdProfileController = async (req, res) => {
     }
 }
 // // to get the user data from database
-// const getUserInfoController = async (req, res) => {
-//     try {
-//         const employess = await userModel.findOne({ _id: req.body.userId })
-//         // console.log(employess);
-//         res.status(200).send({
-//             success: true,
-//             message: "User find Successfuly",
-//             data: employess,
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         res.status(401).send({
-//             message: "Data can't not get",
-//             success: false,
-//         })
-//     }
-// }
+const getStudentInfoController = async (req, res) => {
+    try {
+        const student = await stdModel.findOne({ email: req.body.stdEmail })
+        // console.log(student);
+        res.status(200).send({
+            success: true,
+            message: "Student find Successfuly",
+            data: student,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Data can't not get",
+            success: false,
+        })
+    }
+}
 
-// const getUpdateProfileController = async (req, res) => {
-//     try {
-//         const user = await userModel.findOneAndUpdate({
-//             _id: req.body.userId
-//         },
-//             req.body
-//         )
-//         res.status(201).send({
-//             success: true,
-//             message: "User Profile Updated",
-//             data: user
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         res.status(401).send({
-//             message: "Profile can't updated",
-//             success: false
-//         })
-//     }
-// }
+const getUpdateProfileController = async (req, res) => {
+    try {
+        const UpdateStd = await stdModel.findOneAndUpdate({
+            email: req.body.StdEmail
+        },
+            req.body
+        )
+        res.status(201).send({
+            success: true,
+            message: "User Profile Updated",
+            data: UpdateStd
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Profile can't updated",
+            success: false
+        })
+    }
+}
 
-// const getAllStudentController = async (req, res) => {
-//     try {
-//         const student = await userModel.find({ isStudent: true })
-//         // console.log(student);
-//         res.status(201).send({
-//             success: true,
-//             message: "All students find",
-//             data: student,
-//         })
-//     } catch (error) {
-//         res.status(401).send({
-//             message: "Opps Student dose not exists",
-//             success: false
-//         })
-//     }
-// }
 
-// const SetStudentAttenous = async (req, res) => {
-//     try {
 
-//         const { studentId, student_name, student_email, Student, student_department, attenous } = req.body;
-//         const Newstudent = new studentModel(studentId, student_name, student_email, Student, student_department)
-//         await Newstudent.save();
-//         console.log(Newstudent);
-//         // const user = await userModel.findOneAndUpdate(studentId, (attenous))
+// Functions for the teachers
+const TeacherRegisterController = async (req, res) => {
+    try {
+        const existUser = await teacherModel.findOne({ email: req.body.email })
+        if (existUser) {
+            res.status(201).send({
+                success: false,
+                message: "Already exists"
+            })
+        }
 
-//         // console.log(student)
-//         // await user.save();
-//         res.status(201).send({
-//             success: true,
-//             message: 'Account status Updated',
-//             data: Newstudent,
-//         })
+        const password = req.body.password;
+        const salt = await bcrypt.genSalt(12);
+        const hashPassword = await bcrypt.hash(password, salt)
+        req.body.password = hashPassword;
+        const newUser = new stdModel(req.body);
+        await newUser.save();
+        res.status(201).send({
+            success: true,
+            message: "Register Successfully",
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            success: false,
+            message: `Register Controller ${error.message}`
+        })
+    }
+}
 
-//     } catch (error) {
-//         res.status(401).send({
-//             message: "Sorry user dose not exists",
-//             success: false
-//         })
-//     }
-// }
+
+
+
+
+
 
 module.exports = {
     adminLoginController,
@@ -247,7 +244,11 @@ module.exports = {
     AuthControllers,
     StudentRegisterController,
     getStudentInfo,
-    DeleteStdProfileController
+    DeleteStdProfileController,
+    getStudentInfoController,
+    getUpdateProfileController,
+    TeacherRegisterController
+
     //     getUserInfoController,
     //     getUpdateProfileController,
     //     getAllStudentController,
