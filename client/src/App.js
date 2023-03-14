@@ -16,7 +16,7 @@ import ViewStudent from './pages/Admin/ViewStudent';
 // import StdProtectedRoute from './Components/StdProtected';
 import Profile from './pages/Student/Profile';
 import ViewFaculty from './pages/Admin/ViewFaculty';
-
+import TProfile from './pages/Teacher/Profile'
 const App = () => {
   // const { admin } = useSelector(state => state.admin);
   // const { admin } = useSelector((state) => state.admin);
@@ -93,6 +93,11 @@ const App = () => {
           <Route path='/student/Profile/:email' element={
             <AdminProtectedRoute>
               <Profile />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/teacher/Profile/:email' element={
+            <AdminProtectedRoute>
+              <TProfile />
             </AdminProtectedRoute>
           } />
 
