@@ -15,6 +15,7 @@ import ViewStudent from './pages/Admin/ViewStudent';
 // import { useSelector } from 'react-redux';
 // import StdProtectedRoute from './Components/StdProtected';
 import Profile from './pages/Student/Profile';
+import ViewFaculty from './pages/Admin/ViewFaculty';
 
 const App = () => {
   // const { admin } = useSelector(state => state.admin);
@@ -78,6 +79,12 @@ const App = () => {
               <AddFaculty />
             </AdminProtectedRoute>
           } />
+          <Route path='/admin/viewAllFaculty' element={
+            <AdminProtectedRoute>
+              <ViewFaculty />
+            </AdminProtectedRoute>
+          } />
+
           <Route path='/admin/SeeAllStudnet' element={
             <AdminProtectedRoute>
               <ViewStudent />
