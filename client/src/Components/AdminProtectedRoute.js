@@ -7,6 +7,7 @@ import { setAdmin } from '../Redux/features/adminSlice'
 export default function AdminProtectedRoute({ children }) {
     const dispatch = useDispatch();
     const { admin } = useSelector((state) => state.admin);
+
     // get user
     const getUser = async () => {
         try {

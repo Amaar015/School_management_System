@@ -6,7 +6,7 @@ import axios from 'axios'
 import { setStd } from '../Redux/features/stdSlice'
 export default function StdProtectedRoute({ children }) {
     const dispatch = useDispatch();
-    // const { std } = useSelector(state => state.std);
+    const { student } = useSelector((state) => state.student);
     // get user
     const getUser = async () => {
         try {
@@ -36,11 +36,11 @@ export default function StdProtectedRoute({ children }) {
 
     }
     useEffect(() => {
-        // if (!std) {
-        getUser()
-        // exit();
-        // }
-    }, [getUser])
+        if (!student) {
+            getUser()
+            // exit();
+        }
+    }, [student, getUser])
 
     if (localStorage.getItem('token')) {
         return children;

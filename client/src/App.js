@@ -1,6 +1,6 @@
 import React from 'react'
 import UserPage from './pages/UserPage'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import AdminRegister from './pages/Admin/AdminRegister';
 import AdminLogin from './pages/Admin/AdminLogin';
 import TeacherLogin from './pages/Teacher/TeacherLogin';
@@ -12,17 +12,18 @@ import Home from './pages/Home';
 import AddStudent from './pages/Admin/AddStudent';
 import AddFaculty from './pages/Admin/AddFaculty';
 import ViewStudent from './pages/Admin/ViewStudent';
-// import { useSelector } from 'react-redux';
-// import StdProtectedRoute from './Components/StdProtected';
+import StdProtectedRoute from './Components/StdProtected';
 import Profile from './pages/Student/Profile';
 import ViewFaculty from './pages/Admin/ViewFaculty';
 import TProfile from './pages/Teacher/Profile'
+import { useSelector } from 'react-redux';
 const App = () => {
-  // const { admin } = useSelector(state => state.admin);
-  // const { admin } = useSelector((state) => state.admin);
-  // const Protected = admin ? StdProtectedRoute : AdminProtectedRoute;
-
+  const { admin } = useSelector((state) => state.admin);
+  // const { student } = useSelector((state) => state.student);
+  const Protected = admin ? AdminProtectedRoute : StdProtectedRoute
+  // const Protect =
   return (
+
     <>
       <BrowserRouter>
         <Routes>
@@ -63,9 +64,9 @@ const App = () => {
 
 
           <Route path='/home-user' element={
-            <AdminProtectedRoute>
+            <Protected>
               <Home />
-            </AdminProtectedRoute>
+            </Protected>
           } />
 
 

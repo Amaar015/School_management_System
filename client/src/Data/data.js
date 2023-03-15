@@ -28,17 +28,37 @@ export const teacherMenu = [
 ]
 export const studentMenu = [
     {
-        name: "Student Profile",
+        name: "Profile",
         path: "/profile",
         icon: "fa-solid fa-house",
     },
     {
-        name: "Mark Attenous",
+        name: "Attendance",
         path: "/markStdattenous",
         icon: "fa-solid fa-list",
     },
     {
-        name: "Upload Mark",
+        name: "Time Table",
+        path: "/uploadStudentmark",
+        icon: "fa-solid fa-user-doctor",
+    },
+    {
+        name: "Result",
+        path: "/allNotification",
+        icon: "fa-solid fa-user",
+    },
+    {
+        name: "Sujects",
+        path: "/sendComplain",
+        icon: "fa-solid fa-user",
+    },
+    {
+        name: "Join Club",
+        path: "/markStdattenous",
+        icon: "fa-solid fa-list",
+    },
+    {
+        name: "Complain",
         path: "/uploadStudentmark",
         icon: "fa-solid fa-user-doctor",
     },
@@ -48,10 +68,12 @@ export const studentMenu = [
         icon: "fa-solid fa-user",
     },
     {
-        name: "Complain",
+        name: "Payments",
         path: "/sendComplain",
         icon: "fa-solid fa-user",
     },
+
+
 
 ]
 

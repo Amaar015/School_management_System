@@ -7,18 +7,20 @@ import { teacherMenu, AdminMenu, studentMenu } from '../Data/data';
 const Layout = ({ children }) => {
     const { admin } = useSelector(state => state.admin);
     const { student } = useSelector(state => state.student)
-    const { teacher } = useSelector(state => state.teacher)
+    // const { teacher } = useSelector(state => state.teacher)
+
     const location = useLocation();
     const navigate = useNavigate();
     // Logout function
     const handleLogout = () => {
         localStorage.clear();
         message.success("Logout Successfully");
-        navigate('/adminLogin');
+        navigate('/');
     }
 
-    const Sidebar = admin ? AdminMenu : student ? studentMenu : teacherMenu
 
+    const Sidebar = admin ? AdminMenu : studentMenu
+    const user = admin ? admin?.name : student?.name
     return (
         <>
             <div className="main">
@@ -47,7 +49,7 @@ const Layout = ({ children }) => {
                     </div>
                     <div className="content">
                         <div className="header">
-                            <Link to='/profile'>{admin?.name}</Link>
+                            <Link to='/profile'>{user}</Link>
 
                         </div>
                         <div className="body">{children}</div>

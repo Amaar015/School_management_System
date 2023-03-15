@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 import Layout from '../Components/Layout';
-// import { Row } from 'antd';
+
 const Home = () => {
     return (
         <Layout>
