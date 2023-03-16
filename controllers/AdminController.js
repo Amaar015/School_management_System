@@ -267,44 +267,44 @@ const DeleteTeacherProfileController = async (req, res) => {
     }
 }
 // // // to get the user data from database
-// const getStudentInfoController = async (req, res) => {
-//     try {
-//         const student = await stdModel.findOne({ email: req.body.stdEmail })
-//         // console.log(student);
-//         res.status(200).send({
-//             success: true,
-//             message: "Student find Successfuly",
-//             data: student,
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         res.status(401).send({
-//             message: "Data can't not get",
-//             success: false,
-//         })
-//     }
-// }
+const getTeacherInfoController = async (req, res) => {
+    try {
+        const teacher = await teacherModel.findOne({ email: req.body.TeacherEmail })
+        // console.log(student);
+        res.status(200).send({
+            success: true,
+            message: "Teacher find Successfuly",
+            data: teacher,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Data can't not get",
+            success: false,
+        })
+    }
+}
 
-// const getUpdateProfileController = async (req, res) => {
-//     try {
-//         const UpdateStd = await stdModel.findOneAndUpdate({
-//             email: req.body.StdEmail
-//         },
-//             req.body
-//         )
-//         res.status(201).send({
-//             success: true,
-//             message: "User Profile Updated",
-//             data: UpdateStd
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         res.status(401).send({
-//             message: "Profile can't updated",
-//             success: false
-//         })
-//     }
-// }
+const getUpdateTeacherProfileController = async (req, res) => {
+    try {
+        const UpdateTeacher = await teacherModel.findOneAndUpdate({
+            email: req.body.TeacherEmail
+        },
+            req.body
+        )
+        res.status(201).send({
+            success: true,
+            message: "User Profile Updated",
+            data: UpdateTeacher
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Profile can't updated",
+            success: false
+        })
+    }
+}
 
 
 
@@ -322,9 +322,8 @@ module.exports = {
     getUpdateProfileController,
     TeacherRegisterController,
     getTeacherInfo,
-    DeleteTeacherProfileController
-    //     getUserInfoController,
-    //     getUpdateProfileController,
-    //     getAllStudentController,
-    //     SetStudentAttenous
+    DeleteTeacherProfileController,
+    getTeacherInfoController,
+    getUpdateTeacherProfileController
+
 }
