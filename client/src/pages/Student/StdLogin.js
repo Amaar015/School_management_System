@@ -11,7 +11,7 @@ const StdLogin = () => {
     const dispatch = useDispatch();
     // form hander
     const onfinishHandler = async (values) => {
-        console.log(values);
+        // console.log(values);
         try {
             dispatch(showLoading());
             const res = await axios.post('/api/v1/student/studentlogin', values);

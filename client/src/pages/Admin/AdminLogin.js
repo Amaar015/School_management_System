@@ -20,12 +20,13 @@ const AdminLogin = () => {
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token)
                 message.success('Login successfuly');
-                navigate('/home-user/admin')
+                navigate('/home-user')
             } else {
                 message.error(res.data.message)
             }
         } catch (error) {
             dispatch(hideLoading());
+            // console.log(error)
             message.error("Something went wrong")
         }
     }

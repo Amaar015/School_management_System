@@ -2,25 +2,25 @@ import React from 'react'
 import { Form, Input, message } from 'antd'
 import '../../App.css'
 import { Link, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
-// import { useDispatch } from 'react-redux';
-// import { showLoading, hideLoading } from '../Redux/features/alertSlice';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { showLoading, hideLoading } from '../../Redux/features/alertSlice';
 
 const TeacherLogin = () => {
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     // form hander
     const onfinishHandler = async (values) => {
-        console.log(values);
+        console.log(values)
         // try {
         //     dispatch(showLoading());
-        //     const res = await axios.post('/api/v1/user/login', values);
+        //     const res = await axios.post('/api/v1/teacher/teacherlogin', values);
         //     window.location.reload();
         //     dispatch(hideLoading());
         //     if (res.data.success) {
         //         localStorage.setItem('token', res.data.token)
         //         message.success('Login successfuly');
-        //         navigate('/')
+        //         navigate('/home-user')
         //     } else {
         //         message.error(res.data.message)
         //     }
@@ -41,8 +41,8 @@ const TeacherLogin = () => {
                     <Form.Item label="Password" name="password">
                         <Input type="password" required />
                     </Form.Item>
-                    <Link to='/teacherRegister' className='m-2'>
-                        Create An Account
+                    <Link to='/' className='m-2'>
+                        Back to Home
                     </Link>
                     <button className='btn btn-primary' type="submit">LogIn</button>
                 </Form>
