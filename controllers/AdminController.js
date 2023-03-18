@@ -52,7 +52,7 @@ const adminLoginController = async (req, res) => {
             })
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" })
-        // console.log(token)
+        console.log(token)
         res.status(200).send({
             success: true,
             message: "Login Successfuly",

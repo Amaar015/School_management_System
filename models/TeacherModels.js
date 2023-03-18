@@ -57,6 +57,6 @@ const TeacherSchema = new mongoose.Schema({
 })
 
 // create a database Model
-const teacherModel = mongoose.model('TeacherDB', TeacherSchema)
+const teacherModel = mongoose.models.teacher || mongoose.model('teacher', TeacherSchema)
 // exports a userModel
 module.exports = teacherModel;
