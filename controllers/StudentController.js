@@ -24,6 +24,7 @@ const stdLoginController = async (req, res) => {
             success: true,
             message: "Login Successfuly",
             token,
+
         })
     } catch (error) {
         console.log(error)
