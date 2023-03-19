@@ -11,23 +11,23 @@ const TeacherLogin = () => {
     const dispatch = useDispatch();
     // form hander
     const onfinishHandler = async (values) => {
-        console.log(values)
-        // try {
-        //     dispatch(showLoading());
-        //     const res = await axios.post('/api/v1/teacher/teacherlogin', values);
-        //     window.location.reload();
-        //     dispatch(hideLoading());
-        //     if (res.data.success) {
-        //         localStorage.setItem('token', res.data.token)
-        //         message.success('Login successfuly');
-        //         navigate('/home-user')
-        //     } else {
-        //         message.error(res.data.message)
-        //     }
-        // } catch (error) {
-        //     dispatch(hideLoading());
-        //     message.error("Something went wrong")
-        // }
+        // console.log(values)
+        try {
+            dispatch(showLoading());
+            const res = await axios.post('/api/v1/teacher/teacherlogin', values);
+            window.location.reload();
+            dispatch(hideLoading());
+            if (res.data.success) {
+                localStorage.setItem('token', res.data.token)
+                message.success('Login successfuly');
+                navigate('/home-user')
+            } else {
+                message.error(res.data.message)
+            }
+        } catch (error) {
+            dispatch(hideLoading());
+            message.error("Something went wrong")
+        }
     }
     return (
         <>

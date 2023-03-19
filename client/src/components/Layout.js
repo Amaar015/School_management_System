@@ -1,17 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import '../App.css';
 import { message, Badge } from 'antd'
 import { teacherMenu, AdminMenu, studentMenu } from '../Data/data';
+
 const Layout = ({ children }) => {
     const { admin } = useSelector(state => state.admin);
     const { student } = useSelector(state => state.student)
     // const { teacher } = useSelector(state => state.teacher)
-
     const location = useLocation();
     const navigate = useNavigate();
-    // Logout function
+
     const handleLogout = () => {
         localStorage.clear();
         message.success("Logout Successfully");
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
 
     const Sidebar = admin ? AdminMenu : studentMenu
-    const user = admin ? admin?.name : student?.name
+    const user = student ? student?.name : admin?.name
     return (
         <>
             <div className="main">

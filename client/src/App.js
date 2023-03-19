@@ -18,10 +18,7 @@ import ViewFaculty from './pages/Admin/ViewFaculty';
 import TProfile from './pages/Teacher/Profile'
 import { useSelector } from 'react-redux';
 const App = () => {
-  const { admin } = useSelector((state) => state.admin);
-  // const { student } = useSelector((state) => state.student);
-  const Protected = admin ? AdminProtectedRoute : StdProtectedRoute
-  // const Protect =
+
   return (
 
     <>
@@ -62,12 +59,19 @@ const App = () => {
             </PublicRoute>
           } />
 
+          <Route exact path='/home-student' element={
+            <StdProtectedRoute>
+              <Home />
+            </StdProtectedRoute>
+          } />
 
-          <Route path='/home-user' element={
+          <Route exact path='/home-user' element={
             <AdminProtectedRoute>
               <Home />
             </AdminProtectedRoute>
           } />
+
+
 
 
           <Route path='/addStudent' element={

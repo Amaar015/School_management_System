@@ -15,12 +15,12 @@ const StdLogin = () => {
         try {
             dispatch(showLoading());
             const res = await axios.post('/api/v1/student/studentlogin', values);
-            window.location.reload();
+            // window.location.reload();
             dispatch(hideLoading());
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token)
                 message.success('Login successfuly');
-                navigate('/home-user')
+                navigate('/home-student')
             } else {
                 message.error(res.data.message)
             }
@@ -44,7 +44,9 @@ const StdLogin = () => {
                     <Link to='/' className='m-2'>
                         Back to Home
                     </Link>
+                    {/* <Link to='/home-student' > */}
                     <button className='btn btn-primary' type="submit">LogIn</button>
+                    {/* </Link> */}
                 </Form>
             </div>
         </>

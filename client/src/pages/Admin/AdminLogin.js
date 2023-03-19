@@ -5,13 +5,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../../Redux/features/alertSlice';
-
+import { useParams } from 'react-router-dom';
 const AdminLogin = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const params = useParams()
     // form hander
     const onfinishHandler = async (values) => {
-        // console.log(values);
+        // console.log(params.id);
+        // now sends this params value to protected route
+        // console.log(values)
         try {
             dispatch(showLoading());
             const res = await axios.post('/api/v1/admin/adminlogin', values);
@@ -26,7 +29,7 @@ const AdminLogin = () => {
             }
         } catch (error) {
             dispatch(hideLoading());
-            // console.log(error)
+            console.log(error)
             message.error("Something went wrong")
         }
     }

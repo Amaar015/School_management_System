@@ -11,4 +11,4 @@ export const stdSlice = createSlice({
         }
     }
 })
-export const { setv } = stdSlice.actions;
+export const { setstudent } = stdSlice.actions;

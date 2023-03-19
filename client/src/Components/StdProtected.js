@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../Redux/features/alertSlice'
 import axios from 'axios'
-import { setStd } from '../Redux/features/stdSlice'
+import { setstudent } from '../Redux/features/stdSlice'
 export default function StdProtectedRoute({ children }) {
     const dispatch = useDispatch();
     const { student } = useSelector((state) => state.student);
@@ -21,8 +21,8 @@ export default function StdProtectedRoute({ children }) {
             );
             dispatch(hideLoading());
             if (res.data.success) {
-                console.log(res.data.data);
-                // dispatch(setStd(res.data.data));
+                // console.log(res.data.data);
+                dispatch(setstudent(res.data.data));
             }
             else {
                 <Navigate to='/studentLogin' />
@@ -41,6 +41,7 @@ export default function StdProtectedRoute({ children }) {
             // exit();
         }
     }, [student, getUser])
+
 
     if (localStorage.getItem('token')) {
         return children;
