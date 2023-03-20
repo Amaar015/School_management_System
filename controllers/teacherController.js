@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const teacherModle = require('../models/TeacherModels')
 const teacherLoginController = async (req, res) => {
     try {
-        const user = await stdModel.findOne({ email: req.body.email })
+        const user = await teacherModle.findOne({ email: req.body.email })
         if (!user) {
             return res.status(200).send({
                 success: false,
@@ -19,7 +19,7 @@ const teacherLoginController = async (req, res) => {
             })
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" })
-        console.log(token)
+        // console.log(token)
         res.status(200).send({
             success: true,
             message: "Login Successfuly",
@@ -65,7 +65,7 @@ const TeacherAuthControllers = async (req, res) => {
 // Functions for the teachers
 const TeacherRegisterController = async (req, res) => {
     try {
-        const existUser = await teacherModel.findOne({ email: req.body.email })
+        const existUser = await teacherModle.findOne({ email: req.body.email })
         if (existUser) {
             res.status(201).send({
                 success: false,
@@ -77,7 +77,7 @@ const TeacherRegisterController = async (req, res) => {
         const salt = await bcrypt.genSalt(12);
         const hashPassword = await bcrypt.hash(password, salt)
         req.body.password = hashPassword;
-        const newUser = new teacherModel(req.body);
+        const newUser = new teacherModle(req.body);
         await newUser.save();
         res.status(201).send({
             success: true,
@@ -94,7 +94,7 @@ const TeacherRegisterController = async (req, res) => {
 
 const getTeacherInfo = async (req, res) => {
     try {
-        const teacher = await teacherModel.find()
+        const teacher = await teacherModle.find()
         // console.log(student);
         res.status(200).send({
             success: true,
@@ -113,7 +113,7 @@ const getTeacherInfo = async (req, res) => {
 const DeleteTeacherProfileController = async (req, res) => {
     try {
         // console.log(req.body.TeacherEmail)
-        const teacher = await teacherModel.findOneAndDelete({ email: req.body.TeacherEmail })
+        const teacher = await teacherModle.findOneAndDelete({ email: req.body.TeacherEmail })
         res.status(200).send({
             success: true,
             message: "User deleted successfuly",
@@ -129,7 +129,7 @@ const DeleteTeacherProfileController = async (req, res) => {
 // // // to get the user data from database
 const getTeacherInfoController = async (req, res) => {
     try {
-        const teacher = await teacherModel.findOne({ email: req.body.TeacherEmail })
+        const teacher = await teacherModle.findOne({ email: req.body.TeacherEmail })
         // console.log(student);
         res.status(200).send({
             success: true,
@@ -147,7 +147,7 @@ const getTeacherInfoController = async (req, res) => {
 
 const getUpdateTeacherProfileController = async (req, res) => {
     try {
-        const UpdateTeacher = await teacherModel.findOneAndUpdate({
+        const UpdateTeacher = await teacherModle.findOneAndUpdate({
             email: req.body.TeacherEmail
         },
             req.body
