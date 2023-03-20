@@ -102,22 +102,22 @@ export const AdminMenu = [
     },
     {
         name: "Check Complain",
-        path: "/admin/viewComplaince",
+        path: "/admin/complain",
         icon: "fa-solid fa-user",
     },
     {
         name: "Upload Notice",
-        path: "/admin/CreateNotice",
+        path: "/admin/upload-notice",
         icon: "fa-solid fa-user",
     },
     {
         name: "View Notice",
-        path: "/admin/viewAllNotice",
+        path: "/admin/view-notice",
         icon: "fa-solid fa-user",
     },
     {
         name: "Add Course",
-        path: "/admin/addCourses",
+        path: "/admin/add-subject",
         icon: "fa-solid fa-user",
     },
 

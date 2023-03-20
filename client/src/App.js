@@ -12,7 +12,12 @@ import Home from './pages/Home';
 import AddStudent from './pages/Admin/AddStudent';
 import AddFaculty from './pages/Admin/AddFaculty';
 import ViewStudent from './pages/Admin/ViewStudent';
+import CheckComplain from './pages/Admin/CheckComplain'
+import UploadNotice from './pages/Admin/UploadNotice';
+import ViewNotice from './pages/Admin/ViewNotice'
+import AddSubject from './pages/Admin/AddSubject'
 import StdProtectedRoute from './Components/StdProtected';
+import TeacherProtect from './Components/TeacherRoute';
 import Profile from './pages/Student/Profile';
 import ViewFaculty from './pages/Admin/ViewFaculty';
 import TProfile from './pages/Teacher/Profile'
@@ -70,9 +75,14 @@ const App = () => {
               <Home />
             </AdminProtectedRoute>
           } />
+          <Route exact path='/home-teacher' element={
+            <TeacherProtect>
+              <Home />
+            </TeacherProtect>
+          } />
 
 
-
+          {/* Doctor routes */}
 
           <Route path='/addStudent' element={
             <AdminProtectedRoute>
@@ -105,6 +115,29 @@ const App = () => {
               <TProfile />
             </AdminProtectedRoute>
           } />
+          <Route path='/admin/complain' element={
+            <AdminProtectedRoute>
+              <CheckComplain />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/admin/upload-notice' element={
+            <AdminProtectedRoute>
+              <UploadNotice />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/admin/view-notice' element={
+            <AdminProtectedRoute>
+              <ViewNotice />
+            </AdminProtectedRoute>
+          } />
+          <Route path='/admin/add-subject' element={
+            <AdminProtectedRoute>
+              <AddSubject />
+            </AdminProtectedRoute>
+          } />
+
+
+
 
         </Routes>
       </BrowserRouter>

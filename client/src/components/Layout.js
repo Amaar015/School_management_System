@@ -8,7 +8,7 @@ import { teacherMenu, AdminMenu, studentMenu } from '../Data/data';
 const Layout = ({ children }) => {
     const { admin } = useSelector(state => state.admin);
     const { student } = useSelector(state => state.student)
-    // const { teacher } = useSelector(state => state.teacher)
+    const { teacher } = useSelector(state => state.teacher)
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -19,8 +19,10 @@ const Layout = ({ children }) => {
     }
 
 
-    const Sidebar = admin ? AdminMenu : studentMenu
-    const user = student ? student?.name : admin?.name
+    const Sidebars = admin ? AdminMenu : studentMenu;
+    const Sidebar = teacher ? teacherMenu : Sidebars;
+
+    const user = student ? student?.name : admin ? admin?.name : teacher?.name;
     return (
         <>
             <div className="main">

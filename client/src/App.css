@@ -157,3 +157,12 @@
 .active i {
     color: #333;
 }
+
+
+
+.header>a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+
+}

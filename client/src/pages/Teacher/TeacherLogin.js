@@ -15,12 +15,12 @@ const TeacherLogin = () => {
         try {
             dispatch(showLoading());
             const res = await axios.post('/api/v1/teacher/teacherlogin', values);
-            window.location.reload();
+            // window.location.reload();
             dispatch(hideLoading());
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token)
                 message.success('Login successfuly');
-                navigate('/home-user')
+                navigate('/home-teacher')
             } else {
                 message.error(res.data.message)
             }

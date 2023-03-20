@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../Redux/features/alertSlice'
 import axios from 'axios'
-import { setAdmin } from '../Redux/features/adminSlice'
+import { setTeacher } from '../Redux/features/teacherSlice'
 export default function AdminProtectedRoute({ children }) {
     const dispatch = useDispatch();
     const { teacher } = useSelector((state) => state.teacher);
@@ -22,8 +22,8 @@ export default function AdminProtectedRoute({ children }) {
             );
             dispatch(hideLoading());
             if (res.data.success) {
-                console.log(res.data.data);
-                dispatch(setAdmin(res.data.data));
+                // console.log(res.data.data);
+                dispatch(setTeacher(res.data.data));
             }
             else {
                 <Navigate to='/teacherLogin' />
