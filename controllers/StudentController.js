@@ -65,7 +65,21 @@ const StdAuthControllers = async (req, res) => {
 }
 
 const getStudentInfo = async (req, res) => {
-
+    try {
+        const student = await stdModel.findOne({ email: req.body.StdEmail })
+        console.log(student);
+        res.status(200).send({
+            success: true,
+            message: "Student find Successfuly",
+            data: student,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Data can't not get",
+            success: false,
+        })
+    }
 }
 // // // to get the user data from database
 // // const getUserInfoController = async (req, res) => {
