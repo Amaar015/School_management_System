@@ -1,27 +1,27 @@
 export const teacherMenu = [
     {
         name: "Profile",
-        path: "/profile",
+        path: "/teacher/ProfileT",
         icon: "fa-solid fa-house",
     },
     {
         name: "Mark Attenous",
-        path: "/markStdattenous",
+        path: "/teacher/markattenous",
         icon: "fa-solid fa-list",
     },
     {
         name: "Upload Mark",
-        path: "/uploadStudentmark",
+        path: "/teacher/uploadmark",
         icon: "fa-solid fa-user-doctor",
     },
     {
         name: "Notice",
-        path: "/allNotification",
+        path: "/teacher/notice",
         icon: "fa-solid fa-user",
     },
     {
         name: "Complain",
-        path: "/sendComplain",
+        path: "/teacher/complain",
         icon: "fa-solid fa-user",
     },
 
@@ -29,47 +29,42 @@ export const teacherMenu = [
 export const studentMenu = [
     {
         name: "Profile",
-        path: "/profile",
+        path: "/student/viewprofile",
         icon: "fa-solid fa-house",
     },
     {
         name: "Attendance",
-        path: "/markStdattenous",
+        path: "/student/attendance",
         icon: "fa-solid fa-list",
     },
     {
         name: "Time Table",
-        path: "/uploadStudentmark",
+        path: "/student/timeTable",
         icon: "fa-solid fa-user-doctor",
     },
     {
         name: "Result",
-        path: "/allNotification",
+        path: "/student/result",
         icon: "fa-solid fa-user",
     },
     {
         name: "Sujects",
-        path: "/sendComplain",
+        path: "/student/subject",
         icon: "fa-solid fa-user",
     },
     {
-        name: "Join Club",
-        path: "/markStdattenous",
-        icon: "fa-solid fa-list",
-    },
-    {
         name: "Complain",
-        path: "/uploadStudentmark",
+        path: "/student/complain",
         icon: "fa-solid fa-user-doctor",
     },
     {
         name: "Notice",
-        path: "/allNotification",
+        path: "/student/notice",
         icon: "fa-solid fa-user",
     },
     {
         name: "Payments",
-        path: "/sendComplain",
+        path: "/student/payment",
         icon: "fa-solid fa-user",
     },
 

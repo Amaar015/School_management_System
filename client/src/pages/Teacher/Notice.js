@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../../Components/Layout'
-const TimeTable = () => {
+const Notice = () => {
     return (
         <Layout>
-            <h2>hello from timetable</h2>
+            <h2>Hello from the Notice page</h2>
         </Layout>
     )
 }
 
-export default TimeTable
+export default Notice
