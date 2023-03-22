@@ -64,13 +64,13 @@ const StdAuthControllers = async (req, res) => {
     }
 }
 
-const getStudentInfo = async (req, res) => {
+const getoneStudentInfo = async (req, res) => {
     try {
         const student = await stdModel.findOne({ email: req.body.StdEmail })
-        console.log(student);
+
         res.status(200).send({
             success: true,
-            message: "Student find Successfuly",
+            message: "User find Successfuly",
             data: student,
         })
     } catch (error) {
@@ -81,24 +81,6 @@ const getStudentInfo = async (req, res) => {
         })
     }
 }
-// // // to get the user data from database
-// // const getUserInfoController = async (req, res) => {
-// //     try {
-// //         const employess = await userModel.findOne({ _id: req.body.userId })
-// //         // console.log(employess);
-// //         res.status(200).send({
-// //             success: true,
-// //             message: "User find Successfuly",
-// //             data: employess,
-// //         })
-// //     } catch (error) {
-// //         console.log(error)
-// //         res.status(401).send({
-// //             message: "Data can't not get",
-// //             success: false,
-// //         })
-// //     }
-// // }
 
 // // const getUpdateProfileController = async (req, res) => {
 // //     try {
@@ -121,22 +103,22 @@ const getStudentInfo = async (req, res) => {
 // //     }
 // // }
 
-// // const getAllStudentController = async (req, res) => {
-// //     try {
-// //         const student = await userModel.find({ isStudent: true })
-// //         // console.log(student);
-// //         res.status(201).send({
-// //             success: true,
-// //             message: "All students find",
-// //             data: student,
-// //         })
-// //     } catch (error) {
-// //         res.status(401).send({
-// //             message: "Opps Student dose not exists",
-// //             success: false
-// //         })
-// //     }
-// // }
+const getAllStudentInfo = async (req, res) => {
+    try {
+        const student = await stdModel.find({ isStudent: true })
+        // console.log(student);
+        res.status(201).send({
+            success: true,
+            message: "All students find",
+            data: student,
+        })
+    } catch (error) {
+        res.status(401).send({
+            message: "Opps Student dose not exists",
+            success: false
+        })
+    }
+}
 
 // // const SetStudentAttenous = async (req, res) => {
 // //     try {
@@ -166,5 +148,6 @@ const getStudentInfo = async (req, res) => {
 module.exports = {
     stdLoginController,
     StdAuthControllers,
-    getStudentInfo,
+    getoneStudentInfo,
+    getAllStudentInfo
 }

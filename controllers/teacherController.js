@@ -166,6 +166,33 @@ const getUpdateTeacherProfileController = async (req, res) => {
     }
 }
 
+const getoneTeacherInfo = async (req, res) => {
+    try {
+        const teacher = await teacherModle.findOne({ email: req.body.teacherEmail })
+
+        res.status(200).send({
+            success: true,
+            message: "User find Successfuly",
+            data: teacher,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({
+            message: "Data can't not get",
+            success: false,
+        })
+    }
+}
+const MarkAttendance = async (req, res) => {
+    try {
+
+    } catch (error) {
+        res.status(401).send({
+            message: "Attenous dose not marked",
+            success: false,
+        })
+    }
+}
 
 module.exports = {
     TeacherAuthControllers,
@@ -174,6 +201,7 @@ module.exports = {
     getTeacherInfo,
     DeleteTeacherProfileController,
     getTeacherInfoController,
-    getUpdateTeacherProfileController
-
+    getUpdateTeacherProfileController,
+    getoneTeacherInfo,
+    MarkAttendance
 }
