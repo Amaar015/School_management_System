@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import '../App.css';
 import { message, Badge } from 'antd'
-import { teacherMenu, AdminMenu, studentMenus } from '../Data/data';
+import { teacherMenus, AdminMenu, studentMenus } from '../Data/data';
 
 const Layout = ({ children }) => {
     const { admin } = useSelector(state => state.admin);
@@ -18,54 +18,80 @@ const Layout = ({ children }) => {
         navigate('/');
     }
 
-    const studentMenu = [
+    // const studentMenu = [
+    //     {
+    //         name: "Profile",
+    //         path: `/student/viewprofile/${email}`,
+    //         icon: "fa-solid fa-house",
+    //     },
+    //     {
+    //         name: "Attendance",
+    //         path: "/student/attendance",
+    //         icon: "fa-solid fa-list",
+    //     },
+    //     {
+    //         name: "Time Table",
+    //         path: "/student/timeTable",
+    //         icon: "fa-solid fa-user-doctor",
+    //     },
+    //     {
+    //         name: "Result",
+    //         path: "/student/result",
+    //         icon: "fa-solid fa-user",
+    //     },
+    //     {
+    //         name: "Sujects",
+    //         path: "/student/subject",
+    //         icon: "fa-solid fa-user",
+    //     },
+    //     {
+    //         name: "Complain",
+    //         path: "/student/complain",
+    //         icon: "fa-solid fa-user-doctor",
+    //     },
+    //     {
+    //         name: "Notice",
+    //         path: "/student/notice",
+    //         icon: "fa-solid fa-user",
+    //     },
+    //     {
+    //         name: "Payments",
+    //         path: "/student/payment",
+    //         icon: "fa-solid fa-user",
+    //     },
+    // ]
+
+    const TeacherMenu = [
         {
             name: "Profile",
-            path: `/student/viewprofile/${student?.email}`,
+            path: `/teacher/ProfileT/${teacher?.email}`,
             icon: "fa-solid fa-house",
         },
         {
-            name: "Attendance",
-            path: "/student/attendance",
+            name: "Mark Attenous",
+            path: "/teacher/markattenous",
             icon: "fa-solid fa-list",
         },
         {
-            name: "Time Table",
-            path: "/student/timeTable",
-            icon: "fa-solid fa-user-doctor",
-        },
-        {
-            name: "Result",
-            path: "/student/result",
-            icon: "fa-solid fa-user",
-        },
-        {
-            name: "Sujects",
-            path: "/student/subject",
-            icon: "fa-solid fa-user",
-        },
-        {
-            name: "Complain",
-            path: "/student/complain",
+            name: "Upload Mark",
+            path: "/teacher/uploadmark",
             icon: "fa-solid fa-user-doctor",
         },
         {
             name: "Notice",
-            path: "/student/notice",
+            path: "/teacher/notice",
             icon: "fa-solid fa-user",
         },
         {
-            name: "Payments",
-            path: "/student/payment",
+            name: "Complain",
+            path: "/teacher/complain",
             icon: "fa-solid fa-user",
         },
 
-
-
     ]
 
-    const Sidebars = admin ? AdminMenu : studentMenu;
-    const Sidebar = teacher ? teacherMenu : Sidebars;
+    const Sidebars = admin ? AdminMenu : studentMenus;
+    const Sidebar = teacher ? TeacherMenu : Sidebars;
 
     const user = student ? student?.name : admin ? admin?.name : teacher?.name;
     return (

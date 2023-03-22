@@ -2,8 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     /* background: #222; */
-    width: 60%;
-    height: 80%;
-    margin: 2rem 12rem;
+    width: 70%;
+    height: 90%;
+    margin: 0rem 12rem;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+h4 span {
+    color: #666;
 }

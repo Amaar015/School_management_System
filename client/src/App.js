@@ -198,7 +198,7 @@ const App = () => {
           } />
 
           {/* Teacher Routes */}
-          <Route exact path='/teacher/ProfileT' element={
+          <Route exact path='/teacher/ProfileT/:email' element={
             <TeacherProtect>
               <TeacherProfile />
             </TeacherProtect>

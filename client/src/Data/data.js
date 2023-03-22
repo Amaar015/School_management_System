@@ -1,4 +1,4 @@
-export const teacherMenu = [
+export const teacherMenus = [
     {
         name: "Profile",
         path: "/teacher/ProfileT",
@@ -26,7 +26,7 @@ export const teacherMenu = [
     },
 
 ]
-export const studentMenu = [
+export const studentMenus = [
     {
         name: "Profile",
         path: "/student/viewprofile",
