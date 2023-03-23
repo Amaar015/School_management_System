@@ -119,7 +119,22 @@ const getAllStudentInfo = async (req, res) => {
         })
     }
 }
-
+const getDepartment = async (req, res) => {
+    try {
+        const student = await stdModel.find({ department: req.body.department })
+        // console.log(student);
+        res.status(201).send({
+            success: true,
+            message: "All students find",
+            data: student,
+        })
+    } catch (error) {
+        res.status(401).send({
+            message: "Sorry! department dose not exist",
+            success: false
+        })
+    }
+}
 // // const SetStudentAttenous = async (req, res) => {
 // //     try {
 
@@ -149,5 +164,6 @@ module.exports = {
     stdLoginController,
     StdAuthControllers,
     getoneStudentInfo,
-    getAllStudentInfo
+    getAllStudentInfo,
+    getDepartment
 }
