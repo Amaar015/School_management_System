@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 // import { genComponentStyleHook } from 'antd/es/theme/internal';
 import { message, Table } from 'antd';
 const MarkAttend = () => {
     const [student, setStudent] = useState([]);
+    const params = useParams();
     const getStudent = async () => {
         try {
             const res = await axios.get('/api/v1/student/getallStudents', {

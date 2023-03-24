@@ -38,6 +38,7 @@ import Markattend from './pages/Teacher/MarkAttend'
 import UploadMark from './pages/Teacher/UploadMark'
 import Tnotice from './pages/Teacher/Notice'
 import TeacherProfile from './pages/Teacher/TeacherProfile';
+import Attend from './pages/Teacher/Attend';
 // import { useSelector } from 'react-redux';
 const App = () => {
 
@@ -204,6 +205,11 @@ const App = () => {
             </TeacherProtect>
           } />
           <Route exact path='/teacher/markattenous' element={
+            <TeacherProtect>
+              <Attend />
+            </TeacherProtect>
+          } />
+          <Route exact path='/teacher/departmentstudent/:name' element={
             <TeacherProtect>
               <Markattend />
             </TeacherProtect>
