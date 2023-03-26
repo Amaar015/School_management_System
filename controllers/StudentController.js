@@ -122,7 +122,6 @@ const getAllStudentInfo = async (req, res) => {
 const getDepartment = async (req, res) => {
     try {
         const student = await stdModel.find({ department: req.body.department })
-        // console.log(student);
         res.status(201).send({
             success: true,
             message: "All students find",

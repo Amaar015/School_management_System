@@ -2,6 +2,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const teacherModle = require('../models/TeacherModels')
+const Attendance = require('../models/Attenous');
 const teacherLoginController = async (req, res) => {
     try {
         const user = await teacherModle.findOne({ email: req.body.email })
@@ -184,8 +185,15 @@ const getoneTeacherInfo = async (req, res) => {
     }
 }
 const MarkAttendance = async (req, res) => {
+    console.log(names);
     try {
 
+        const attenous = new Attendance({ id, name: stdname, email, gender, department, status });
+        await attenous.save();
+        res.status(201).send({
+            success: true,
+            message: "Attenous marked",
+        })
     } catch (error) {
         res.status(401).send({
             message: "Attenous dose not marked",
