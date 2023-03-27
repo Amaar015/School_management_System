@@ -9,8 +9,10 @@ const MarkAttend = () => {
     const [student, setStudent] = useState([]);
     const params = useParams();
     const getStudent = async () => {
+
         try {
-            const res = await axios.get('/api/v1/student/getallStudents', {
+            const res = await axios.post('/api/v1/student/getDepartment', { department: params.name }, {
+
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -29,11 +31,13 @@ const MarkAttend = () => {
     // handle account status
 
     const handleAccountStatus = async (record, status) => {
+        console.log(record.name)
         try {
             const res = await axios.post('/api/v1/teacher/markattendance',
                 {
-                    studentId: record._id, stdname: record.name, status: status,
-                    department: record.department, email: record.email, id: record.id, gender: record.gender
+                    names: record.name
+                    // studentId: record._id, stdname: record.name, status: status,
+                    // department: record.department, email: record.email, id: record.id, gender: record.gender
                 },
                 {
                     headers: {
@@ -82,7 +86,7 @@ const MarkAttend = () => {
                 <div className="d-flex gap-2">
                     {/* {record.status === 'absent' ? */}
                     <button className="btn btn-success" onClick={() => handleAccountStatus(record, 'present')}>Present</button>
-                    <button className="btn btn-danger" onClick={() => handleAccountStatus(record, 'present')}>Absent</button>
+                    <button className="btn btn-danger" onClick={() => handleAccountStatus(record, 'absent')}>Absent</button>
                     {/* } */}
                 </div>
             )
