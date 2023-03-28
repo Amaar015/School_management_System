@@ -185,10 +185,8 @@ const getoneTeacherInfo = async (req, res) => {
     }
 }
 const MarkAttendance = async (req, res) => {
-    console.log(names);
     try {
-
-        const attenous = new Attendance({ id, name: stdname, email, gender, department, status });
+        const attenous = new Attendance({ id: req.body.id, name: req.body.stdname, email: req.body.email, gender: req.body.gender, department: req.body.department, status: req.body.status });
         await attenous.save();
         res.status(201).send({
             success: true,

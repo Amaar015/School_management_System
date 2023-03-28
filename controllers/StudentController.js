@@ -2,6 +2,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const stdModel = require('../models/studentModel');
+const AttenousModel = require('../models/Attenous')
 const stdLoginController = async (req, res) => {
     try {
         const user = await stdModel.findOne({ email: req.body.email })
@@ -134,35 +135,27 @@ const getDepartment = async (req, res) => {
         })
     }
 }
-// // const SetStudentAttenous = async (req, res) => {
-// //     try {
 
-// //         const { studentId, student_name, student_email, Student, student_department, attenous } = req.body;
-// //         const Newstudent = new studentModel(studentId, student_name, student_email, Student, student_department)
-// //         await Newstudent.save();
-// //         console.log(Newstudent);
-// //         // const user = await userModel.findOneAndUpdate(studentId, (attenous))
-
-// //         // console.log(student)
-// //         // await user.save();
-// //         res.status(201).send({
-// //             success: true,
-// //             message: 'Account status Updated',
-// //             data: Newstudent,
-// //         })
-
-// //     } catch (error) {
-// //         res.status(401).send({
-// //             message: "Sorry user dose not exists",
-// //             success: false
-// //         })
-// //     }
-// // }
-
+const getStudentAttenous = async (req, res) => {
+    try {
+        const attenous = await AttenousModel.find({ id: req.body.stdId })
+        res.send({
+            message: "Student Attenous",
+            success: true,
+            data: attenous
+        })
+    } catch (error) {
+        res.status(401).send({
+            message: "Attenous dose not fatched",
+            success: false,
+        })
+    }
+}
 module.exports = {
     stdLoginController,
     StdAuthControllers,
     getoneStudentInfo,
     getAllStudentInfo,
-    getDepartment
+    getDepartment,
+    getStudentAttenous
 }
