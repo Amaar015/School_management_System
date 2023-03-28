@@ -161,7 +161,7 @@ const App = () => {
               <Stdprofile />
             </StdProtectedRoute>
           } />
-          <Route exact path='/student/attendance' element={
+          <Route exact path='/student/attendance/:id' element={
             <StdProtectedRoute>
               <Attendence />
             </StdProtectedRoute>

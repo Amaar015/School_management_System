@@ -28,16 +28,41 @@ const MarkAttend = () => {
         getStudent()
     }, [])
 
-    // handle account status
+    // handle account status present
 
     const handleAccountStatus = async (record, status) => {
         console.log(record.name)
         try {
             const res = await axios.post('/api/v1/teacher/markattendance',
                 {
-                    names: record.name
-                    // studentId: record._id, stdname: record.name, status: status,
-                    // department: record.department, email: record.email, id: record.id, gender: record.gender
+                    // names: record.name
+                    studentId: record._id, stdname: record.name, status: status,
+                    department: record.department, email: record.email, id: record.id, gender: record.gender
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+            if (res.data.success) {
+                message.success(res.data.message)
+                window.location.reload();
+            }
+        } catch (error) {
+            message.error('Something went Wrong')
+        }
+    }
+
+    // handle account status absent
+
+    const handleAccountsStatus = async (record, status) => {
+        console.log(record.name)
+        try {
+            const res = await axios.post('/api/v1/teacher/markattendance',
+                {
+                    // names: record.name
+                    studentId: record._id, stdname: record.name, status: status,
+                    department: record.department, email: record.email, id: record.id, gender: record.gender
                 },
                 {
                     headers: {
@@ -86,7 +111,7 @@ const MarkAttend = () => {
                 <div className="d-flex gap-2">
                     {/* {record.status === 'absent' ? */}
                     <button className="btn btn-success" onClick={() => handleAccountStatus(record, 'present')}>Present</button>
-                    <button className="btn btn-danger" onClick={() => handleAccountStatus(record, 'absent')}>Absent</button>
+                    <button className="btn btn-danger" onClick={() => handleAccountsStatus(record, 'absent')}>Absent</button>
                     {/* } */}
                 </div>
             )

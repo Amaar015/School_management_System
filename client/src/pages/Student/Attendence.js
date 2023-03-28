@@ -2,26 +2,28 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
 import axios from 'axios'
-// import { genComponentStyleHook } from 'antd/es/theme/internal';
+import { useParams } from 'react-router-dom';
 import { message, Table } from 'antd';
 const Attendence = () => {
-    const [student, setStudent] = useState([]);
-    const getStudent = async () => {
+    const [attenous, setAttenous] = useState([]);
+    const params = useParams();
+    const getAttenous = async () => {
+
         try {
-            const res = await axios.get('/api/v1/teacher/getallStudents', {
+            const res = await axios.post('/api/v1/student/getStudentAttenous', { stdId: params.id }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             })
             if (res.data.success) {
-                setStudent(res.data.data);
+                setAttenous(res.data.data);
             }
         } catch (error) {
             console.log(error)
         }
     }
     useEffect(() => {
-        getStudent()
+        getAttenous()
     }, [])
 
     // handle account status
@@ -63,21 +65,15 @@ const Attendence = () => {
             dataIndex: 'email',
         },
         {
-            title: "Phone",
-            dataIndex: "phone"
+            title: "ID",
+            dataIndex: 'id'
         },
-
         {
-            title: "Actions",
-            dataIndex: "actions",
-            render: (text, record) => (
-                <div className="d-flex">
-                    {/* {record.status === 'Pending' ? <button className="btn btn-success" onClick={() => handleAccountStatus(record, 'approved')}>Approve</button> : */}
-                    <button className="btn btn-danger">Reject</button>
-                    {/* } */}
-                </div>
-            )
+            title: "Date",
+            dataIndex: 'date'
         }
+
+
 
     ]
 
@@ -85,7 +81,7 @@ const Attendence = () => {
 
         <Layout>
             <h1 className='text-center m-2'>All doctors are here</h1>
-            <Table columns={columns} dataSource={student} />
+            <Table columns={columns} dataSource={attenous} />
         </Layout>
     )
 }

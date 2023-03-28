@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const StdProfile = () => {
     const [student, setStudent] = useState('');
     const params = useParams();
-    console.log(params.email)
+
 
     const getStudent = async () => {
         try {

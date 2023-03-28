@@ -18,80 +18,80 @@ const Layout = ({ children }) => {
         navigate('/');
     }
 
-    // const studentMenu = [
-    //     {
-    //         name: "Profile",
-    //         path: `/student/viewprofile/${email}`,
-    //         icon: "fa-solid fa-house",
-    //     },
-    //     {
-    //         name: "Attendance",
-    //         path: "/student/attendance",
-    //         icon: "fa-solid fa-list",
-    //     },
-    //     {
-    //         name: "Time Table",
-    //         path: "/student/timeTable",
-    //         icon: "fa-solid fa-user-doctor",
-    //     },
-    //     {
-    //         name: "Result",
-    //         path: "/student/result",
-    //         icon: "fa-solid fa-user",
-    //     },
-    //     {
-    //         name: "Sujects",
-    //         path: "/student/subject",
-    //         icon: "fa-solid fa-user",
-    //     },
-    //     {
-    //         name: "Complain",
-    //         path: "/student/complain",
-    //         icon: "fa-solid fa-user-doctor",
-    //     },
-    //     {
-    //         name: "Notice",
-    //         path: "/student/notice",
-    //         icon: "fa-solid fa-user",
-    //     },
-    //     {
-    //         name: "Payments",
-    //         path: "/student/payment",
-    //         icon: "fa-solid fa-user",
-    //     },
-    // ]
-
-    const TeacherMenu = [
+    const studentMenu = [
         {
             name: "Profile",
-            path: `/teacher/ProfileT/${teacher?.email}`,
+            path: `/student/viewprofile/${student?.email}`,
             icon: "fa-solid fa-house",
         },
         {
-            name: "Mark Attenous",
-            path: "/teacher/markattenous",
+            name: "Attendance",
+            path: `/student/attendance/${student?.id}`,
             icon: "fa-solid fa-list",
         },
         {
-            name: "Upload Mark",
-            path: "/teacher/uploadmark",
+            name: "Time Table",
+            path: "/student/timeTable",
             icon: "fa-solid fa-user-doctor",
         },
         {
-            name: "Notice",
-            path: "/teacher/notice",
+            name: "Result",
+            path: "/student/result",
+            icon: "fa-solid fa-user",
+        },
+        {
+            name: "Sujects",
+            path: "/student/subject",
             icon: "fa-solid fa-user",
         },
         {
             name: "Complain",
-            path: "/teacher/complain",
+            path: "/student/complain",
+            icon: "fa-solid fa-user-doctor",
+        },
+        {
+            name: "Notice",
+            path: "/student/notice",
             icon: "fa-solid fa-user",
         },
-
+        {
+            name: "Payments",
+            path: "/student/payment",
+            icon: "fa-solid fa-user",
+        },
     ]
 
-    const Sidebars = admin ? AdminMenu : studentMenus;
-    const Sidebar = teacher ? TeacherMenu : Sidebars;
+    // const teacherMenus = [
+    //     {
+    //         name: "Profile",
+    //         path: `/teacher/ProfileT/${teacher?.email}`,
+    //         icon: "fa-solid fa-house",
+    //     },
+    //     {
+    //         name: "Mark Attenous",
+    //         path: "/teacher/markattenous",
+    //         icon: "fa-solid fa-list",
+    //     },
+    //     {
+    //         name: "Upload Mark",
+    //         path: "/teacher/uploadmark",
+    //         icon: "fa-solid fa-user-doctor",
+    //     },
+    //     {
+    //         name: "Notice",
+    //         path: "/teacher/notice",
+    //         icon: "fa-solid fa-user",
+    //     },
+    //     {
+    //         name: "Complain",
+    //         path: "/teacher/complain",
+    //         icon: "fa-solid fa-user",
+    //     },
+
+    // ]
+
+    const Sidebars = admin ? AdminMenu : studentMenu;
+    const Sidebar = teacher ? teacherMenus : Sidebars;
 
     const user = student ? student?.name : admin ? admin?.name : teacher?.name;
     return (
